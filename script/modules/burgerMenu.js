@@ -2,7 +2,6 @@ const body = document.querySelector('body');
 const menuList = body.querySelector('.header__menu');
 
 body.addEventListener('click', ({ target }) => {
-  console.log('target: ', target);
   target.matches('.header__menu-button')
     ? menuList.classList.toggle('header__menu_active')
     : '';
