@@ -13,9 +13,9 @@ fly.style.cssText = `
 document.body.append(fly);
 
 if (docEl.clientWidth < 768) {
-  fly.style.display === 'none';
+  fly.style.display = 'none';
 } else {
-  fly.style.display === 'block';
+  fly.style.display = 'block';
 }
 
 const calcPositionFly = () => {
