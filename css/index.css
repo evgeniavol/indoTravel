@@ -619,7 +619,7 @@ p {
 		z-index: 1;
 }
 
-.header__menu-button {
+/* .header__menu-button {
 		width: 35px;
 		height: 16px;
 		background: url("../img/hero/menu.svg") center/contain no-repeat;
@@ -635,7 +635,7 @@ p {
 		-webkit-transform: scale(1.1);
 		-ms-transform: scale(1.1);
 		transform: scale(1.1);
-}
+} */
 
 .header__list {
 		display: -webkit-box;
