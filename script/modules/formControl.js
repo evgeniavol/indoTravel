@@ -1,7 +1,7 @@
-import { loadDb } from './fetch.js';
-
 const reservationData = document.querySelector('.reservation__data');
 const reservationPrice = document.querySelector('.reservation__price');
+const reservationInput = document.querySelector('.reservation__input');
+const reservationPhone = document.querySelector('#reservation__phone');
 const selectDataTour = document.querySelector('#reservation__date');
 const selectPeopleCount = document.querySelector('#reservation__people');
 let dataT = '';
@@ -49,10 +49,18 @@ export const formControl = (data) => {
     totalPrice = tourData.price * tourData.people;
 
     tour = tourData;
-    form.reset();
-
-		reservationData.textContent = '';
-		reservationPrice.textContent = `0₽`
-    return { tourData };
+    const reset = () => {
+      selectDataTour.selectedIndex = 0;
+      selectPeopleCount.selectedIndex = 0;
+      reservationInput.value = '';
+      reservationPhone.value = '';
+      reservationData.textContent = '';
+      reservationPrice.textContent = `0₽`
+    }
+    reset();
+    return {
+      tourData
+    };
   });
 };
+
