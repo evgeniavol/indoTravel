@@ -1,9 +1,15 @@
+import {
+  dbReservationControl,
+  dbEmailControl
+} from './dbControl.js';
+
 const reservationData = document.querySelector('.reservation__data');
 const reservationPrice = document.querySelector('.reservation__price');
 const reservationInput = document.querySelector('.reservation__input');
 const reservationPhone = document.querySelector('#reservation__phone');
 const selectDataTour = document.querySelector('#reservation__date');
 const selectPeopleCount = document.querySelector('#reservation__people');
+
 let dataT = '';
 let totalPrice = 0;
 let tour = {
@@ -11,7 +17,7 @@ let tour = {
   people: 0,
 };
 
-export const formControl = (data) => {
+export const formReservationControl = (data) => {
   dataT = data;
   const form = document.querySelector('.reservation__form');
   reservationPrice.textContent = `${totalPrice}₽`;
@@ -49,6 +55,7 @@ export const formControl = (data) => {
     totalPrice = tourData.price * tourData.people;
 
     tour = tourData;
+  
     const reset = () => {
       selectDataTour.selectedIndex = 0;
       selectPeopleCount.selectedIndex = 0;
@@ -58,9 +65,30 @@ export const formControl = (data) => {
       reservationPrice.textContent = `0₽`
     }
     reset();
+
+    dbReservationControl(tour);
+
     return {
       tourData
     };
   });
 };
+
+export const formEmailControl = () => {
+  const form = document.querySelector('.footer__form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const emailData = Object.fromEntries(formData);
+
+    dbEmailControl(emailData);
+
+    return { emailData };
+  });
+};
+
+
+
 
