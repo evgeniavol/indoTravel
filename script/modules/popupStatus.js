@@ -23,8 +23,10 @@ export const createPopupStatus201 = () => {
   overlay.append(div);
 
 	document.body.append(overlay)
-
-
+function hideElem() {
+  overlay.classList.remove('overlay', 'is-visible');
+}
+setTimeout(hideElem, 2000);
   return {
     overlay,
     div,
@@ -60,7 +62,10 @@ export const createPopupStatusFalse = () => {
 	btnFalse.addEventListener('click', () => {
 		overlay.classList.remove('is-visible');
 	})
-
+  function hideElem() {
+    overlay.classList.remove('overlay', 'is-visible');
+  }
+  setTimeout(hideElem, 2000);
   return {
     overlay,
     div,
@@ -97,7 +102,10 @@ export const createEmailStatusFalse = () => {
 	btnFalse.addEventListener('click', () => {
 		overlay.classList.remove('is-visible');
 	})
-
+  function hideElem() {
+    overlay.classList.remove('overlay', 'is-visible');
+  }
+  setTimeout(hideElem, 2000);
   return {
     overlay,
     div,
