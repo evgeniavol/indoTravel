@@ -1,6 +1,5 @@
-
 export const createPopupStatus201 = () => {
-	const inputEmail = document.querySelector('.footer__input')
+  const inputEmail = document.querySelector('.footer__input')
   const overlay = document.createElement('div');
   overlay.classList.add('overlay', 'is-visible');
 
@@ -22,11 +21,12 @@ export const createPopupStatus201 = () => {
 
   overlay.append(div);
 
-	document.body.append(overlay)
-function hideElem() {
-  overlay.classList.remove('overlay', 'is-visible');
-}
-setTimeout(hideElem, 2000);
+  document.body.append(overlay)
+
+  function hideElem() {
+    overlay.classList.remove('overlay', 'is-visible');
+  }
+  setTimeout(hideElem, 1000);
   return {
     overlay,
     div,
@@ -34,16 +34,16 @@ setTimeout(hideElem, 2000);
 };
 
 export const createPopupStatusFalse = () => {
-	const overlay = document.createElement('div');
+  const overlay = document.createElement('div');
   overlay.classList.add('overlay', 'is-visible');
 
 
-	const div = document.createElement('div');
+  const div = document.createElement('div');
   div.classList.add('popup__false');
 
 
 
-	div.insertAdjacentHTML(
+  div.insertAdjacentHTML(
     'beforeend',
     `
       <button class="close" type="button"></button>
@@ -56,16 +56,17 @@ export const createPopupStatusFalse = () => {
 
   overlay.append(div);
 
-	document.body.append(overlay)
+  document.body.append(overlay)
 
-	const btnFalse = document.querySelector('.btn__false')
-	btnFalse.addEventListener('click', () => {
-		overlay.classList.remove('is-visible');
-	})
+  const btnFalse = document.querySelector('.btn__false')
+  btnFalse.addEventListener('click', () => {
+    overlay.classList.remove('is-visible');
+  })
+
   function hideElem() {
     overlay.classList.remove('overlay', 'is-visible');
   }
-  setTimeout(hideElem, 2000);
+  setTimeout(hideElem, 1000);
   return {
     overlay,
     div,
@@ -73,17 +74,17 @@ export const createPopupStatusFalse = () => {
 }
 
 export const createEmailStatusFalse = () => {
-	const inputEmail = document.querySelector('.footer__input')
-	const overlay = document.createElement('div');
+  const inputEmail = document.querySelector('.footer__input')
+  const overlay = document.createElement('div');
   overlay.classList.add('overlay', 'is-visible');
 
 
-	const div = document.createElement('div');
+  const div = document.createElement('div');
   div.classList.add('popup__false');
 
 
 
-	div.insertAdjacentHTML(
+  div.insertAdjacentHTML(
     'beforeend',
     `
       <button class="close" type="button"></button>
@@ -96,16 +97,17 @@ export const createEmailStatusFalse = () => {
 
   overlay.append(div);
 
-	document.body.append(overlay)
+  document.body.append(overlay)
 
-	const btnFalse = document.querySelector('.btn__false')
-	btnFalse.addEventListener('click', () => {
-		overlay.classList.remove('is-visible');
-	})
+  const btnFalse = document.querySelector('.btn__false')
+  btnFalse.addEventListener('click', () => {
+    overlay.classList.remove('is-visible');
+  })
+
   function hideElem() {
     overlay.classList.remove('overlay', 'is-visible');
   }
-  setTimeout(hideElem, 2000);
+  setTimeout(hideElem, 1000);
   return {
     overlay,
     div,

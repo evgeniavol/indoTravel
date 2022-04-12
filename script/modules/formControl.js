@@ -1,7 +1,7 @@
-import {
-  dbReservationControl,
-  dbEmailControl
-} from './dbControl.js';
+import { showModal } from './modal.js';
+import { dbReservationControl, dbEmailControl} from './dbControl.js';
+import { loadStyles } from './loadStyle.js';
+
 
 const reservationData = document.querySelector('.reservation__data');
 const reservationPrice = document.querySelector('.reservation__price');
@@ -16,6 +16,22 @@ let tour = {
   dates: 0,
   people: 0,
 };
+
+export const modalControl = async (tour) => {
+  await loadStyles('css/modal.css');
+
+  const { overlayConfirm, modal } = showModal(tour);
+
+  modal.addEventListener('click', ({ target }) => {
+    if (target.classList.contains('modal__btn_confirm')) {
+      dbReservationControl(tour);
+      overlayConfirm.classList.remove('is-visible');
+    }
+    if (target.classList.contains('modal__btn_edit'))
+      overlayConfirm.classList.remove('is-visible');
+  });
+};
+
 
 export const formReservationControl = (data) => {
   dataT = data;
@@ -54,23 +70,19 @@ export const formReservationControl = (data) => {
     });
     totalPrice = tourData.price * tourData.people;
 
-    tour = tourData;
-  
-    const reset = () => {
-      selectDataTour.selectedIndex = 0;
-      selectPeopleCount.selectedIndex = 0;
-      reservationInput.value = '';
-      reservationPhone.value = '';
-      reservationData.textContent = '';
-      reservationPrice.textContent = `0₽`
+    if (tour.people != 0) {
+      tour = tourData;
+    } else {
+      alert(`Выберите количество человек!`);
     }
-    reset();
-
-    dbReservationControl(tour);
-
-    return {
-      tourData
-    };
+    
+    reservationData.textContent = '';
+    reservationPrice.textContent = `${totalPrice}₽`;
+    
+    tour.price = totalPrice;
+       modalControl(tour);
+    
+    return { tourData };
   });
 };
 
