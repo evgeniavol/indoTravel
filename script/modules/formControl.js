@@ -1,10 +1,10 @@
 import { showModal } from './modal.js';
 import { dbReservationControl, dbEmailControl} from './dbControl.js';
 import { loadStyles } from './loadStyle.js';
+import {reservationName} from './validateInput.js';
 
-
-const reservationData = document.querySelector('.reservation__data');
-const reservationPrice = document.querySelector('.reservation__price');
+export const reservationData = document.querySelector('.reservation__data');
+export const reservationPrice = document.querySelector('.reservation__price');
 const reservationInput = document.querySelector('.reservation__input');
 const reservationPhone = document.querySelector('#reservation__phone');
 const selectDataTour = document.querySelector('#reservation__date');
@@ -75,14 +75,13 @@ export const formReservationControl = (data) => {
     } else {
       alert(`Выберите количество человек!`);
     }
-    
-    reservationData.textContent = '';
     reservationPrice.textContent = `${totalPrice}₽`;
-    
+
     tour.price = totalPrice;
-       modalControl(tour);
-    
-    return { tourData };
+    if (/[А-ЯЁа-яё]+\s[А-ЯЁа-яё]+\s[А-ЯЁа-яё]+/.test(reservationName.value)) {
+      modalControl(tour);
+      return {tourData};
+    }
   });
 };
 

@@ -1,3 +1,4 @@
+import {reservationData, reservationPrice} from './formControl.js'
 export const showModal = (tour) => {
   const overlayConfirm = document.createElement('div');
   overlayConfirm.classList.add('overlay', 'overlay_confirm', 'is-visible');
@@ -40,7 +41,7 @@ export const showModal = (tour) => {
   document.body.append(overlayConfirm);
   btnConfirm.addEventListener('click', () => {
     form.reset();
-    const reservationPrice = document.querySelector('.reservation__price');
+    reservationData.textContent = '';
     reservationPrice.textContent = '0₽';
     overlayConfirm.classList.remove('is-visible');
   })
